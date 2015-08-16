@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="scheduledPayments-sources">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/scheduledPayments-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

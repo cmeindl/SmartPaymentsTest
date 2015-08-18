@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 @SpringBootApplication
@@ -36,21 +37,32 @@ public class Application {
     }
 
     public static void main(String args[]) {
-        String JSON = "";
-        try {
-            JSON = readUrl("http://rm1-smart-payments-api-dev.mybluemix.net/v1/scheduledPayments/a");
-        } catch (Exception e) {
-            e.printStackTrace();
+
+
+      ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
+        ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
+
+        for (ScheduledPayments SP : SPA){
+            System.out.println(SP.getAmount());
+
         }
 
-        JSONArray JA = new JSONArray(JSON);
-        int count = JA.length(); // get totalCount of all jsonObjects
-        for (int i = 0; i < count; i++) {   // iterate through jsonArray
-            JSONObject jsonObject = JA.getJSONObject(i);  // get jsonObject @ i position
-            System.out.println("jsonObject " + i + ": " + jsonObject);
-            JSONObject JO = new JSONObject(jsonObject.get("value").toString());
-            System.out.println(JO.get("referenceNumber").toString());
-        }
+       SPAClass.SendToServer(new ScheduledPayments( "accName",  "accBSB",  "accAccount",  "customerNumber",  "referenceNumber",  1.0,  "priority",  "1",  "payBefore",  "open"));
+//        String JSON = "";
+//        try {A
+//            JSON = readUrl("http:/ /rm1-smart-payments-api-dev.mybluemix.net/v1/scheduledPayments/a");
+//        } catch (Exception e) {a
+//            e.printStackTrace();
+//        }
+//
+//        JSONArray JA = new JSONArray(JSON);
+//        int count = JA.length(); // get totalCount of all jsonObjects
+//        for (int i = 0; i < count; i++) {   // iterate through jsonArray
+//            JSONObject jsonObject = JA.getJSONObject(i);  // get jsonObject @ i position
+//            System.out.println("jsonObject " + i + ": " + jsonObject);
+//            JSONObject JO = new JSONObject(jsonObject.get("value").toString());
+//            System.out.println(JO.get("referenceNumber").toString());
+//        }
     }
 
 }

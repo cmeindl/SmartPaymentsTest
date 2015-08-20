@@ -1,5 +1,7 @@
 package com.example2;
 
+import java.util.Calendar;
+
 public class ScheduledPayments {
 String AccName;
     String AccBSB;
@@ -14,11 +16,12 @@ String AccName;
     String ID;
     String Key;
 
-    public ScheduledPayments(String accName, String accBSB, String accAccount, String customerNumber, String referenceNumber, Double amount, String payRule, String payPriority, String payBefore, String paystatus) {
-        AccName = accName;
-        AccBSB = accBSB;
-        AccAccount = accAccount;
-        CustomerNumber = customerNumber;
+    public ScheduledPayments(String accname, String accbsb, String accaccount, String referenceNumber, Double amount, String payRule, String payPriority, String payBefore, String paystatus) {
+        Calendar calendar = Calendar.getInstance();
+        AccName = accname;
+        AccBSB = accbsb;
+        AccAccount = accaccount;
+        CustomerNumber = "AwesomeMelon";
         ReferenceNumber = referenceNumber;
         Amount = amount;
         PayRule = payRule;

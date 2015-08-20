@@ -36,19 +36,53 @@ public class Application {
 
     }
 
+
+
+
+
+
+
     public static void main(String args[]) {
 
 
       ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
-        ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
 
-        for (ScheduledPayments SP : SPA){
-            System.out.println(SP.getAmount());
+//
+//        for (ScheduledPayments SP : SPA){
+//            System.out.println(SP.getAmount());
+//
+//        }
 
-        }
+     //  SPAClass.SendToServer(new ScheduledPayments( "accName",  "accBSB",  "accAccount",  "customerNumber",  "referenceNumber",  1.0,  "priority",  "1",  "payBefore",  "open"));
+        //SPAClass.SendToServer(new ScheduledPayments( "Super Account",  "033900",  "90210",  "AwesomeMelon",  "Melon1",  300000.0,  "priority",  "1",  "payBefore",  "open"));
+        //ScheduledPayments(String accname, String accbsb, String accaccount,String referenceNumber, Double amount, String payRule, String payPriority, String payBefore, String paystatus)
 
-       SPAClass.SendToServer(new ScheduledPayments( "accName",  "accBSB",  "accAccount",  "customerNumber",  "referenceNumber",  1.0,  "priority",  "1",  "payBefore",  "open"));
-//        String JSON = "";
+      // SPAClass.SendToServer(new ScheduledPayments("Wages","033900","90000","4_The_Wage_Slaves",3000000.00, "priority","1","2015-08-20","open"));
+       // SPAClass.SendToServer(new ScheduledPayments("Aus Gov","013900","922000","Customs",9000.00, "standard","2","2015-08-20","open"));
+     //   SPAClass.SendToServer(new ScheduledPayments("Wages","033900","90000","4_The_Wage_Slaves-SMALL",100.00, "priority","1","2015-08-20","open"));
+    //    ScheduledPayments SP = new ScheduledPayments("Murder Inc","04300","9","Make_sure_We_Win",3000000.00, "standard","2","2015-08-20","open");
+       //SPAClass.DeleteSched("AwesomeMelon","Customs");
+        //SPAClass.SendToServer(SP);
+
+       // ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
+
+       // System.out.println( SPAClass.GetAccountBalance());
+       // SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance());
+       // SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance());
+       // SPAClass.UpdateStatusofSchedule(SP,"paid");
+       // SPAClass.PutAccountBalance(40000.00,"AwesomeMelon","90210");
+       //System.out.println( SPAClass.GetAccountBalance("AwesomeMelon","90210"));
+        //SPAClass.sendSMS("+61407027559", "Some Random Text");
+       // SPAClass.sendSMS("+61403367829", "Some Random Text");
+
+
+
+
+
+
+
+//
+//String JSON = "";
 //        try {A
 //            JSON = readUrl("http:/ /rm1-smart-payments-api-dev.mybluemix.net/v1/scheduledPayments/a");
 //        } catch (Exception e) {a

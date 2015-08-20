@@ -26,7 +26,7 @@ public class ScheduledPayments_Array {
         // Find highest priority
         Integer HighPri = 99;
         for (ScheduledPayments SP : SPA) {
-            if (SP.getPaystatus() != "paid") {
+            if (!SP.getPaystatus().contains("paid")) {
                 if (Integer.parseInt(SP.getPayPriority()) < HighPri) {
                     HighPri = Integer.parseInt(SP.getPayPriority());
 
@@ -38,7 +38,7 @@ public class ScheduledPayments_Array {
 
         for (ScheduledPayments SP : SPA) {
 
-            if ((SP.getPaystatus() != "paid") && Integer.parseInt(SP.getPayPriority()) == HighPri) {
+            if ((!SP.getPaystatus().contains("paid")) && Integer.parseInt(SP.getPayPriority()) == HighPri) {
                 if (SP.getAmount() <= AccBal) {
                     ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
                     AccBal = AccBal - SP.getAmount();
@@ -76,7 +76,8 @@ public class ScheduledPayments_Array {
 
     }
 
-    private String ScheduledPaymetnsGetURL = "http://rm2-smart-payments-api-dev.mybluemix.net/v1/scheduledPayments";
+    private String ScheduledPaymetnsGetURL = "http://rm3-smart-payments-api-dev.mybluemix.net/v1/scheduledPayments";
+    private String BlueMixBaseURL = "http://rm3-smart-payments-api-dev.mybluemix.net";
     private ArrayList<ScheduledPayments> SPArray = new ArrayList<ScheduledPayments>();
 
     public void sendSMS(String Number, String Message){
@@ -88,7 +89,7 @@ public class ScheduledPayments_Array {
         System.out.println(returnedObject.toString());
         HttpClient httpClient = HttpClientBuilder.create().build();
         try {
-            HttpPost request = new HttpPost("http://rm3-smart-payments-api-dev.mybluemix.net/v1/sendSMS");
+            HttpPost request = new HttpPost( BlueMixBaseURL +"/v1/sendSMS");
             System.out.println(returnedObject.toString());
             request.setEntity(new StringEntity(returnedObject.toString(), ContentType.create("APPLICATION_JSON")));
 
@@ -155,7 +156,7 @@ public class ScheduledPayments_Array {
         String JSON = "";
         String Bal = "0";
         try {
-            JSON = readUrl("http://rm2-smart-payments-api-dev.mybluemix.net/v1/accountBalance/"+ Customer);
+            JSON = readUrl(BlueMixBaseURL +"/v1/accountBalance/"+ Customer);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -192,7 +193,7 @@ public class ScheduledPayments_Array {
         System.out.println(returnedObject.toString());
         HttpClient httpClient = HttpClientBuilder.create().build();
         try {
-            HttpPut request = new HttpPut("http://rm3-smart-payments-api-dev.mybluemix.net/v1/accountBalance?customerNumber=" + Customer + "&accountId=" + Account);
+            HttpPut request = new HttpPut(BlueMixBaseURL +"/v1/accountBalance?customerNumber=" + Customer + "&accountId=" + Account);
            // String JSONString = "{  \"payToAccount\": {\"name\": \"string\", \"bsb\": \"string\", \"account\": \"string\"},\"customerNumber\":\"string\",\"referenceNumber\":\"string\",\"amount\":0,\"payRule\": \"priority\",\"payPriority\": \"1\",\"payBefore\": \"string\",\"payStatus\": \"open\"}";
             System.out.println(returnedObject.toString());
             request.setEntity(new StringEntity(returnedObject.toString(), ContentType.create("APPLICATION_JSON")));
@@ -284,7 +285,10 @@ public class ScheduledPayments_Array {
             SP.setAmount(Double.parseDouble(JO.get("amount").toString()));
             SP.setPayRule(JO.get("payRule").toString());
             SP.setPayPriority(JO.get("payPriority").toString());
-            SP.setPayBefore(JO.get("payBefore").toString());
+            try {
+                SP.setPayBefore(JO.get("payBefore").toString());
+            }catch(Exception e){}
+
             SP.setPaystatus(JO.get("payStatus").toString());
             try {
                 JSONObject JOAccount = new JSONObject(JO.get("payToAccount").toString());

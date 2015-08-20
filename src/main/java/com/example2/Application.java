@@ -64,13 +64,13 @@ public class Application {
        //SPAClass.DeleteSched("AwesomeMelon","Customs");
         //SPAClass.SendToServer(SP);
 
-       ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
+      // ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
 
        // System.out.println( SPAClass.GetAccountBalance());
-       SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance("AwesomeMelon","90210"),"AwesomeMelon","90210");
+      // SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance("AwesomeMelon","90210"),"AwesomeMelon","90210");
        // SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance());
        // SPAClass.UpdateStatusofSchedule(SP,"paid");
-       // SPAClass.PutAccountBalance(40000.00,"AwesomeMelon","90210");
+        SPAClass.PutAccountBalance(40000.00,"AwesomeMelon","90210");
        //System.out.println( SPAClass.GetAccountBalance("AwesomeMelon","90210"));
         //SPAClass.sendSMS("+61407027559", "Some Random Text");
        // SPAClass.sendSMS("+61403367829", "Some Random Text");

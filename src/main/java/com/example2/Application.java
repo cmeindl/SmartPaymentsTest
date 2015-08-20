@@ -57,17 +57,17 @@ public class Application {
         //SPAClass.SendToServer(new ScheduledPayments( "Super Account",  "033900",  "90210",  "AwesomeMelon",  "Melon1",  300000.0,  "priority",  "1",  "payBefore",  "open"));
         //ScheduledPayments(String accname, String accbsb, String accaccount,String referenceNumber, Double amount, String payRule, String payPriority, String payBefore, String paystatus)
 
-      // SPAClass.SendToServer(new ScheduledPayments("Wages","033900","90000","4_The_Wage_Slaves",3000000.00, "priority","1","2015-08-20","open"));
-       // SPAClass.SendToServer(new ScheduledPayments("Aus Gov","013900","922000","Customs",9000.00, "standard","2","2015-08-20","open"));
-     //   SPAClass.SendToServer(new ScheduledPayments("Wages","033900","90000","4_The_Wage_Slaves-SMALL",100.00, "priority","1","2015-08-20","open"));
-    //    ScheduledPayments SP = new ScheduledPayments("Murder Inc","04300","9","Make_sure_We_Win",3000000.00, "standard","2","2015-08-20","open");
+          // SPAClass.SendToServer(new ScheduledPayments("Wages","033900","90000","4_The_Wage_Slaves",3000000.00, "priority","1","2015-08-20","open"));
+           // SPAClass.SendToServer(new ScheduledPayments("Aus Gov","013900","922000","Customs",9000.00, "standard","2","2015-08-20","open"));
+         //   SPAClass.SendToServer(new ScheduledPayments("Wages","033900","90000","4_The_Wage_Slaves-SMALL",100.00, "priority","1","2015-08-20","open"));
+        //    ScheduledPayments SP = new ScheduledPayments("Murder Inc","04300","9","Make_sure_We_Win",3000000.00, "standard","2","2015-08-20","open");
        //SPAClass.DeleteSched("AwesomeMelon","Customs");
         //SPAClass.SendToServer(SP);
 
-       // ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
+       ArrayList<ScheduledPayments> SPA  = SPAClass.BuildSchedulePayArray();
 
        // System.out.println( SPAClass.GetAccountBalance());
-       // SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance());
+       SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance("AwesomeMelon","90210"),"AwesomeMelon","90210");
        // SPAClass.ChecktoMakePayment(SPA, SPAClass.GetAccountBalance());
        // SPAClass.UpdateStatusofSchedule(SP,"paid");
        // SPAClass.PutAccountBalance(40000.00,"AwesomeMelon","90210");

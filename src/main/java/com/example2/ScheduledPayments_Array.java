@@ -21,7 +21,7 @@ public class ScheduledPayments_Array {
         System.out.println("Made Payment");
     }
 
-    public void ChecktoMakePayment(ArrayList<ScheduledPayments> SPA, Double AccBal) {
+    public void ChecktoMakePayment(ArrayList<ScheduledPayments> SPA, Double AccBal, String Customer, String Account) {
 
         // Find highest priority
         Integer HighPri = 99;
@@ -41,10 +41,10 @@ public class ScheduledPayments_Array {
             if ((SP.getPaystatus() != "paid") && Integer.parseInt(SP.getPayPriority()) == HighPri) {
                 if (SP.getAmount() <= AccBal) {
                     ScheduledPayments_Array SPAClass = new ScheduledPayments_Array();
+                    AccBal = AccBal - SP.getAmount();
                     MakePayment(SP);
-
-
                     SPAClass.UpdateStatusofSchedule(SP, "paid");
+                    SPAClass.PutAccountBalance(AccBal, Customer, Account);
 
 
                 }

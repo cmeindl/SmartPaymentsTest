@@ -232,6 +232,20 @@ public class ScheduledPayments_Array {
 
     }
 
+    public ScheduledPayments GetSchedPayObject(String Customer, String RefNumber){
+        ScheduledPayments SPOut = new ScheduledPayments();
+        ArrayList<ScheduledPayments> SPA ;
+        SPA = _BuildSchedulePayArray(Customer);
+        for (ScheduledPayments SP : SPA){
+            if (SP.getReferenceNumber().contains(RefNumber)){
+                SPOut = SP;
+                break;
+            }
+
+        }
+return SPOut;
+    }
+
 
     public void UpdateStatusofSchedule(ScheduledPayments SP, String paystatus) {
         JSONObject returnedObject = new JSONObject();
@@ -265,7 +279,7 @@ public class ScheduledPayments_Array {
     private ArrayList<ScheduledPayments> _BuildSchedulePayArray(String CustomerNumber) {
         String JSON = "";
         try {
-            JSON = readUrl(ScheduledPaymetnsGetURL + CustomerNumber);
+            JSON = readUrl(ScheduledPaymetnsGetURL + "/" + CustomerNumber);
         } catch (Exception e) {
             e.printStackTrace();
         }
